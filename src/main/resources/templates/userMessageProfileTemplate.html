@@ -107,23 +107,23 @@
                                      alt="">
                             </div>
                             <div class="nav-name">
-                                <h1>Askia</h1>
+                                <h1 th:text="${accountUserMessage.name}">Askia</h1>
                             </div>
                             <div class="nav-hotMessage">
                                 <div class="layui-font-18">
                                     lv
                                     <div class="layui-progress" lay-showPercent="yes">
-                                        <div class="layui-progress-bar layui-bg-blue" lay-percent="5/6"></div>
+                                        <div class="layui-progress-bar layui-bg-blue" th:attr="lay-percent=${accountUserMessage.lv}+'/'+ 6"></div>
                                     </div>
                                 </div>
                                 <div class="layui-font-18">
                                     exp
                                     <div class="layui-progress" lay-showPercent="yes">
-                                        <div class="layui-progress-bar layui-bg-red" lay-percent="50/100"></div>
+                                        <div class="layui-progress-bar layui-bg-red" th:attr="lay-percent=(${accountUserMessage.exp} +'/'+ ${accountUserMessage.maxExp})"></div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 12px" class="layui-font-18">
-                                    coins:<span>1231231</span>
+                                    coins:<span th:text="${accountUserMessage.coins}">0</span>
                                 </div>
                             </div>
                             <hr class="hr-style"/>
@@ -200,14 +200,14 @@
                                 <span class="symbol-input">
 						            <i class="fa fa-user-o" aria-hidden="true"></i>
 					            </span>
-                                <input class="input-widget" type="text" placeholder="请输入昵称"/>
+                                <input class="input-widget" type="text" placeholder="请输入昵称" th:value="${accountUserMessage.name}"/>
                             </div>
                             <div class="input">
                                 <span class="input-title">年龄</span><br>
                                 <span class="symbol-input">
 						            <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
 					            </span>
-                                <input class="input-widget" type="number" placeholder="请输入年龄"/>
+                                <input class="input-widget" type="number" placeholder="请输入年龄" th:value="${accountUserMessage.age}"/>
                             </div>
                             <div class="input">
                                 <span class="input-title">私信</span><br>
@@ -215,8 +215,8 @@
 						            <i class="fa fa-envelope-o"></i>
 					            </span>
                                 <select class="select-widget">
-                                    <option value="true" selected>开启</option>
-                                    <option value="false">关闭</option>
+                                    <option value="true" th:selected="${accountUserMessage.ableCom == true}">开启</option>
+                                    <option value="false" th:selected="${accountUserMessage.ableCom == false}">关闭</option>
                                 </select>
                             </div>
                         </div>
@@ -226,20 +226,20 @@
                                 <span class="symbol-input">
 						            <i class="fa fa-at" aria-hidden="true"></i>
 					            </span>
-                                <input class="input-widget" type="text" placeholder="请输入邮箱"/>
+                                <input class="input-widget" type="text" readonly="readonly" placeholder="请输入邮箱" th:value="${accountUserMessage.email}"/>
                             </div>
                             <div class="input">
                                 <span class="input-title">注册时间</span><br>
                                 <span class="symbol-input">
 						            <i class="fa fa-registered" aria-hidden="true"></i>
 					            </span>
-                                <input class="input-widget" type="datetime-local" placeholder="请选择日期"/>
+                                <input class="input-widget" type="datetime-local" readonly="readonly" placeholder="请选择日期" th:value="${accountUserMessage.registedTime}"/>
                             </div>
                         </div>
                         <div style="padding-top: 10px" class="layui-col-md8">
                             <div class="text">
                                 <span class="input-title">自我介绍</span><br>
-                                <textarea id="editor" name="editor" rows="10" class="text-widget"></textarea>
+                                <textarea id="editor" name="editor" rows="10" class="text-widget" th:text="${accountUserMessage.introduction}">这个人啥也没留下</textarea>
                             </div>
                         </div>
                     </form>
