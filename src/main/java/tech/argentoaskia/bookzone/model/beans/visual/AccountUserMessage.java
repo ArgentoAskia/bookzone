@@ -135,7 +135,7 @@ public class AccountUserMessage implements Serializable {
                 super.toString() +","+
                 "uid=" + uid.get() +
                 ", name='" + name + '\'' +
-                ", icon=" + icon +
+                ", icon=" + icon.getImageURL() +
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", ableCom=" + ableCom +
