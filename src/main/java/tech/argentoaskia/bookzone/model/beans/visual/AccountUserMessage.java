@@ -28,6 +28,7 @@ public class AccountUserMessage implements Serializable {
     private LocalDateTime registedTime;
     private Integer lv;
     private Integer exp;
+    private Integer maxExp;
     private Integer coins;
 
     private int countForPrivateMessage;
@@ -95,6 +96,18 @@ public class AccountUserMessage implements Serializable {
 
     public void setLv(Integer lv) {
         this.lv = lv;
+        switch (lv){
+            case 1: maxExp = 10000; break;
+            case 2: maxExp = 50000; break;
+            case 3: maxExp = 150000; break;
+            case 4: maxExp = 350000; break;
+            case 5: maxExp = 650000; break;
+            default: maxExp = 999999; break;
+        }
+    }
+
+    public Integer getMaxExp() {
+        return maxExp;
     }
 
     public Integer getExp() {
