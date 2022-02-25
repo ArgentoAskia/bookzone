@@ -14,6 +14,7 @@ import tech.argentoaskia.bookzone.model.beans.atomic.BookManageStatus;
 import tech.argentoaskia.bookzone.model.beans.atomic.UID;
 import tech.argentoaskia.bookzone.model.beans.original.AccountBookManage;
 import tech.argentoaskia.bookzone.model.beans.original.AccountMessage;
+import tech.argentoaskia.bookzone.model.beans.original.UserMessage;
 import tech.argentoaskia.bookzone.repository.mapper.account.*;
 import tech.argentoaskia.bookzone.service.bootstrap.CacheChain;
 import tech.argentoaskia.bookzone.service.bootstrap.CacheInit;
@@ -90,6 +91,8 @@ public class BookzoneApplicationTests {
     private AccountReadingRecordDAO readingRecordDAO;
     @Autowired
     private AccountSecurityDAO securityDAO;
+    @Autowired
+    private UserMessageDAO userMessageDAO;
 
     @Test
     void testbookManageDAOInsert(){
@@ -115,7 +118,7 @@ public class BookzoneApplicationTests {
 //        System.out.println(list1);
 //        List<AccountBookManage> list2 = bookManageDAO.selectAll();
 //        System.out.println(list2);
-        AccountMessage message = messageDAO.selectByUID(new UID(1000000001L));
+        UserMessage message = userMessageDAO.selectByUID(1000000001L);
         System.out.println(message);
         // 长记性了，写sql的时候记得写as！！
     }
