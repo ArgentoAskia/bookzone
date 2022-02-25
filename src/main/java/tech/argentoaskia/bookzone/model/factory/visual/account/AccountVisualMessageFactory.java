@@ -16,7 +16,7 @@ public class AccountVisualMessageFactory {
         accountUserMessage.setEmail(accountMessage.getEmail());
         accountUserMessage.setExp(message.getExp());
         accountUserMessage.setIcon(message.getIcon());
-        accountUserMessage.setIntroduction(accountUserMessage.getIntroduction());
+        accountUserMessage.setIntroduction(message.getIntroduction());
         accountUserMessage.setLv(message.getLv());
         accountUserMessage.setName(accountMessage.getName());
         accountUserMessage.setRegistedTime(message.getRegistedTime());
