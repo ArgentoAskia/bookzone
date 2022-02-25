@@ -96,8 +96,6 @@ public class AccountController extends BaseController {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
     @RequestMapping(value = "/registed", method = RequestMethod.POST)
