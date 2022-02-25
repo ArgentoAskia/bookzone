@@ -40,7 +40,7 @@ public class UserController extends BaseController {
             }
         }
         logger.debug("URl{}", accountUserMessage);
-        map.addAttribute("accountUserMessageIcon", accountUserMessage.getIcon().getImageURL());
+        map.addAttribute("accountUserMessageIcon", "/icon/profile");
         return "userMessageProfileTemplate";
     }
 
