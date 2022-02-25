@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.account.AccountBookManageDAO">
+
+    <select id="selectAll" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountBookManage">
+        SELECT UID uid, BID bid, BNAME bookName, BMANAGESTATUS status
+        FROM user_book_manage
+    </select>
+    <select id="selectByUID" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountBookManage"
+    parameterType="tech.argentoaskia.bookzone.model.beans.atomic.UID">
+        SELECT UID uid, BID bid, BNAME bookName, BMANAGESTATUS status
+        FROM user_book_manage
+        WHERE UID = #{uid}
+    </select>
+    <select id="selectByBID" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountBookManage"
+            parameterType="tech.argentoaskia.bookzone.model.beans.atomic.BID">
+        SELECT UID uid, BID bid, BNAME bookName, BMANAGESTATUS status
+        FROM user_book_manage
+        WHERE BID = #{bid}
+    </select>
+    <select id="selectByPrimary" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountBookManage">
+        SELECT UID uid, BID bid, BNAME bookName, BMANAGESTATUS status
+        FROM user_book_manage
+        WHERE UID = #{uid} and BID = #{bid}
+    </select>
+    <select id="selectByOriginalType" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountBookManage"
+    parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountBookManage">
+        SELECT UID uid, BID bid, BNAME bookName, BMANAGESTATUS status
+        FROM user_book_manage
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="bid != null">
+                and BID = #{bid}
+            </if>
+            <if test="bookName != null">
+                and BNAME = #{bookName}
+            </if>
+            <if test="status != null">
+                and BMANAGESTATUS = #{status}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertMore">
+        INSERT INTO user_book_manage
+        values
+        <foreach collection="array" separator="," item="accountBookManage" index="i">
+            (#{accountBookManage.uid}, #{accountBookManage.bid}, #{accountBookManage.bookName}, #{accountBookManage.status})
+        </foreach>
+    </insert>
+    <insert id="insert">
+        INSERT INTO user_book_manage
+        VALUES(#{uid}, #{bid}, #{bookName}, #{status})
+    </insert>
+
+    <delete id="deleteByUID">
+        delete from user_book_manage
+        where UID = #{uid}
+    </delete>
+    <delete id="deleteByBID">
+        delete from user_book_manage
+        where BID = #{bid}
+    </delete>
+    <delete id="delete">
+        delete from user_book_manage
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="bid != null">
+                and BID = #{bid}
+            </if>
+            <if test="bookName != null">
+                and BNAME = #{bookName}
+            </if>
+            <if test="status != null">
+                and BMANAGESTATUS = #{status}
+            </if>
+            <!-- 防止删库跑路 -->
+            <if test="uid == null and bid == null and bookName == null and status == null">
+                and UID = 0
+            </if>
+        </where>
+    </delete>
+
+    <update id="update">
+        UPDATE user_book_manage
+        <set>
+            <if test="bookName != null">
+                BNAME = #{bookName},
+            </if>
+            <if test="status != null">
+                BMANAGESTATUS = #{status},
+            </if>
+            UID = #{uid}
+            BID = #{bid}
+        </set>
+        where UID = #{uid} and BID = #{bid}
+    </update>
+
+</mapper>

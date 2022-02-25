@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.account.AccountMessageDAO">
+
+    <resultMap id="AccountMessage" type="tech.argentoaskia.bookzone.model.beans.original.AccountMessage">
+        <id property="uid.id" column="UID"/>
+        <result property="email" column="UEMAIL"/>
+        <result property="name" column="UNAME"/>
+        <result property="status" column="USTATUS"/>
+    </resultMap>
+
+
+    <insert id="register" parameterType="int">
+        INSERT INTO user_account_message(
+        <if test="firstRecord == true">
+            UID,
+        </if>
+        UNAME, UEMAIL, UPASSWORD)
+        values(
+        <if test="firstRecord == true">
+            1000000000,
+        </if>
+        #{uName}, #{uEmail}, #{uPassword})
+    </insert>
+    <insert id="registerByUID">
+        INSERT INTO user_account_message(UID, UNAME, UEMAIL, UPASSWORD)
+        values(#{uid},#{uName}, #{uEmail}, #{uPassword})
+    </insert>
+    <insert id="insert" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountMessage">
+        INSERT INTO user_account_message(UID, UNAME, UEMAIL, UPASSWORD)
+        values(#{uid},#{uName}, #{uEmail}, #{uPassword})
+    </insert>
+
+    <update id="update">
+        UPDATE user_account_message
+        <set>
+            <if test="uid != null">
+                UID = #{uid},
+            </if>
+            <if test="email != null">
+                UEMAIL = #{email},
+            </if>
+            <if test="name != null">
+                UNAME = #{name},
+            </if>
+            <if test="status != null">
+                USTATUS = #{status},
+            </if>
+        </set>
+        where UID = #{uid}
+    </update>
+    <delete id="delete" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountMessage">
+        delete from user_account_message
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="email != null">
+                and UEMAIL = #{email}
+            </if>
+            <if test="name != null">
+                and UNAME = #{name}
+            </if>
+            <if test="status != null">
+                and USTATUS = #{status}
+            </if>
+            <if test="uid == null and email == null and name == null and status == null">
+                and UID = 0;
+            </if>
+        </where>
+    </delete>
+
+
+    <select id="selectAll" resultMap="AccountMessage">
+        SELECT UID, UNAME, UEMAIL, USTATUS
+        FROM user_account_message
+    </select>
+    <select id="selectByUID" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountMessage"
+    parameterType="tech.argentoaskia.bookzone.model.beans.atomic.UID">
+        SELECT UID uid, UNAME name, UEMAIL email, USTATUS status
+        FROM user_account_message
+        WHERE UID = #{uid}
+    </select>
+    <select id="checkAccountByUID" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT UPASSWORD
+        FROM user_account_message
+        WHERE UID = #{uid}
+    </select>
+    <select id="checkAccountByName" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT UPASSWORD
+        FROM user_account_message
+        WHERE UNAME = #{uname}
+    </select>
+    <select id="checkAccountByEmail" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT UPASSWORD
+        FROM user_account_message
+        WHERE UNAME = #{uemail}
+    </select>
+    <select id="selectByOriginalType" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountMessage"
+            parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountMessage" resultMap="AccountMessage">
+        select UID, UNAME, UEMAIL, USTATUS
+        FROM user_account_message
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="email != null">
+                and UEMAIL = #{email}
+            </if>
+            <if test="name != null">
+                and UNAME = #{name}
+            </if>
+            <if test="status != null">
+                and USTATUS = #{status}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

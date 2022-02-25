@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+>
+<head>
+    <title>演示：紫色背景简洁登陆页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../static/framework/layui/css/layui.css" rel="stylesheet"
+          type="text/css" th:href="@{~/framework/layui/css/layui.css}"/>
+
+
+    <!--图标-->
+    <link href="../static/common/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css" th:href="@{~/common/css/font-awesome.min.css}"/>
+
+    <!--布局框架-->
+    <link href="../static/common/css/util.css" rel="stylesheet"
+          type="text/css" th:href="@{~/common/css/util.css}"/>
+
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="../static/common/css/profileTemplate.css">
+    <link href="../static/common/css/profileTemplate.css" rel="stylesheet"
+          type="text/css" th:href="@{~/common/css/profileTemplate.css}"/>
+
+    <script src="https://cdn.jsdelivr.net/gh/xwlrbh/HandyEditor@1.8.0/HandyEditor.min.js"></script>
+    <script src="../static/framework/layui/layui.js"></script>
+    <script src="../static/common/js/ProfileTemplateCommen.js"></script>
+
+
+
+</head>
+
+<body>
+
+<div class="main">
+    <div id="header">
+        <!-- 导航栏 -->
+        <ul class="nav-main layui-nav">
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">最新活动</a>
+            </li>
+            <li class="layui-nav-item layui-this">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">产品</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">大数据</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">解决方案</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="">社区</a>
+            </li>
+            <li style="margin-top:10px; margin-right: 170px;" class="layui-nav-more">
+                <div class="layui-input-block">
+                    <input style="width: 200px" type="text" name="title" required lay-verify="required"
+                           placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </li>
+            <li style="margin-top: 10px;margin-right: 90px;" class="layui-nav-more">
+                <a class="layui-btn layui-btn-radius layui-btn-primary">
+                    <i style="font-size: 20px; color: #1b1e21;" class="layui-icon layui-icon-search"></i>
+                </a>
+            </li>
+            <li style="margin-top: 10px;margin-right: 20px" class="layui-nav-more">
+                <a class="layui-btn layui-btn-radius layui-btn-primary" href="../static/login.html">
+                    <i style="font-size: 20px; color: #1b1e21;" class="layui-icon layui-icon-user">
+                        <span class="layui-badge">
+                            10
+                        </span>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function () {
+                var element = layui.element;
+                //…
+            });
+        </script>
+    </div>
+
+    <div class="container-main100">
+        <!-- 面包屑和副标题 -->
+        <div class="breadcrumb">
+            <h1 style="font-size: 30px; font-weight: bold;">12312312</h1>
+            <span class="layui-breadcrumb" lay-separator="-">
+                <a href="">首页</a>
+                <a href="">国际新闻</a>
+                <a href="">亚太地区</a>
+                <a><cite>正文</cite></a>
+            </span>
+        </div>
+        <!-- 中间的面板 -->
+        <div id="panel" class="wrap-main100">
+            <div class="layui-fluid">
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-md3">
+                        <div class="nav">
+                            <div class="nav-d1">
+                                <img class="nav-img"
+                                     th:src="@{{url}(url=${accountUserMessageIcon})}"
+                                     src="../img/icon/default_book.png"
+                                     alt="">
+                            </div>
+                            <div class="nav-name">
+                                <h1>Askia</h1>
+                            </div>
+                            <div class="nav-hotMessage">
+                                <div class="layui-font-18">
+                                    lv
+                                    <div class="layui-progress" lay-showPercent="yes">
+                                        <div class="layui-progress-bar layui-bg-blue" lay-percent="5/6"></div>
+                                    </div>
+                                </div>
+                                <div class="layui-font-18">
+                                    exp
+                                    <div class="layui-progress" lay-showPercent="yes">
+                                        <div class="layui-progress-bar layui-bg-red" lay-percent="50/100"></div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 12px" class="layui-font-18">
+                                    coins:<span>1231231</span>
+                                </div>
+                            </div>
+                            <hr class="hr-style"/>
+                            <div class="button-group">
+                                <button type="button" class="button-type-selected layui-btn layui-btn-normal">
+                                    <i class="fa fa-user-circle-o fa-lg"></i>
+                                    <span class="button-type-name">
+                                        个人信息
+                                    </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('manageProfileTemplate.html')">
+                                    <i class="fa fa-book fa-lg"></i>
+                                    <span class="button-type-name">
+                                        我管理的小说
+                                    </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('collectionProfileTemplate.html')">
+                                    <i class="fa fa-heart fa-lg"></i>
+                                    <span class="button-type-name">
+                                         收藏夹
+                                    </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('privateMessageProfileTemplate.html')">
+                                    <i class="fa fa-envelope fa-lg"></i>
+                                    <span class="button-type-name">
+                                        我的私信
+                                    </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('recieveProfileTemplate.html')">
+                                    <i class="fa fa-handshake-o"></i>
+                                    <span class="button-type-name">
+                                        我的回复
+                                    </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('readRecordProfileTemplate.html')">
+                                    <i class="fa fa-eye fa-lg"></i>
+                                    <span class="button-type-name">
+                                         阅读记录
+                                     </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('coinRecordProfileTemplate.html')">
+                                    <i class="fa fa-bandcamp fa-lg"></i>
+                                    <span class="button-type-name">
+                                        硬币获取记录
+                                    </span>
+                                </button>
+                                <br>
+                                <button type="button" class="button-type layui-btn layui-btn-primary"
+                                        onclick="href('readRecordProfileTemplate.html')">
+                                    <i class="fa fa-wheelchair-alt fa-lg"></i>
+                                    <span class="button-type-name">
+                                        经验获取记录
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <form>
+                        <div style="padding-top: 50px" class="layui-col-md4">
+                            <div class="input">
+                                <span class="input-title">昵称</span><br>
+                                <span class="symbol-input">
+						            <i class="fa fa-user-o" aria-hidden="true"></i>
+					            </span>
+                                <input class="input-widget" type="text" placeholder="请输入昵称"/>
+                            </div>
+                            <div class="input">
+                                <span class="input-title">年龄</span><br>
+                                <span class="symbol-input">
+						            <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+					            </span>
+                                <input class="input-widget" type="number" placeholder="请输入年龄"/>
+                            </div>
+                            <div class="input">
+                                <span class="input-title">私信</span><br>
+                                <span class="symbol-input">
+						            <i class="fa fa-envelope-o"></i>
+					            </span>
+                                <select class="select-widget">
+                                    <option value="true" selected>开启</option>
+                                    <option value="false">关闭</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="padding-top: 50px" class="layui-col-md4">
+                            <div class="input">
+                                <span class="input-title">邮箱</span><br>
+                                <span class="symbol-input">
+						            <i class="fa fa-at" aria-hidden="true"></i>
+					            </span>
+                                <input class="input-widget" type="text" placeholder="请输入邮箱"/>
+                            </div>
+                            <div class="input">
+                                <span class="input-title">注册时间</span><br>
+                                <span class="symbol-input">
+						            <i class="fa fa-registered" aria-hidden="true"></i>
+					            </span>
+                                <input class="input-widget" type="datetime-local" placeholder="请选择日期"/>
+                            </div>
+                        </div>
+                        <div style="padding-top: 10px" class="layui-col-md8">
+                            <div class="text">
+                                <span class="input-title">自我介绍</span><br>
+                                <textarea id="editor" name="editor" rows="10" class="text-widget"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

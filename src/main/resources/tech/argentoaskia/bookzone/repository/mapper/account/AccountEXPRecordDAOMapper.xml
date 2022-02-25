@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.account.AccountEXPRecordDAO">
+    <insert id="insert" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountEXPRecord">
+        insert into user_exp_record
+        values (#{uid}, #{operation}, #{opTime}, #{expGet})
+    </insert>
+    <update id="update" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountEXPRecord">
+        update user_exp_record
+        set UEXPGET = #{expGet}
+        where UID = #{uid} and UOPERTIME = #{opTime}
+    </update>
+    <delete id="delete" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountEXPRecord">
+        delete from user_exp_record
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="operation != null">
+                and UOPERATION = #{operation}
+            </if>
+            <if test="opTime != null">
+                and UOPERTIME = #{opTime}
+            </if>
+            <if test="expGet != null">
+                and UEXPGET = #{expGet}
+            </if>
+            <if test="uid == null and operation == null and opTime == null and expGet == null">
+                and UID = 0
+            </if>
+        </where>
+    </delete>
+    <select id="selectAll" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountEXPRecord">
+        select UID uid, UOPERATION operation, UOPERTIME opTime, UEXPGET expGet
+        FROM  user_exp_record
+    </select>
+    <select id="selectByOriginalType" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountEXPRecord"
+            parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountEXPRecord">
+        select UID uid, UOPERATION operation, UOPERTIME opTime, UEXPGET expGet
+        from user_exp_record
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="operation != null">
+                and UOPERATION = #{operation}
+            </if>
+            <if test="opTime != null">
+                and UOPERTIME = #{opTime}
+            </if>
+            <if test="expGet != null">
+                and UEXPGET = #{expGet}
+            </if>
+        </where>
+    </select>
+</mapper>

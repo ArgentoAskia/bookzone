@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>演示：紫色背景简洁登陆页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--图标-->
+    <link rel="stylesheet" type="text/css" href="common/css/font-awesome.min.css">
+
+    <!--布局框架-->
+    <link rel="stylesheet" type="text/css" href="common/css/util.css">
+
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="common/css/main.css">
+
+    <!-- md-->
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="framework/layui/layui.js"></script>
+
+    <!-- callback-->
+    <script>
+        // 定义xmlhttp
+        var xmlhttp;
+
+        function callback() {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                var redirect = xmlhttp.getResponseHeader("redirect");
+                if (redirect != null){
+                    window.location.href = redirect;
+                }
+                alert("http响应状态码：" + xmlhttp.status);
+                alert("http响应字符串：" + xmlhttp.responseText);
+                var texts = xmlhttp.responseText.split("&");
+                alert(texts);
+
+                layer.msg(texts[0], {icon: 5});
+                document.getElementById("hidden2").value = texts[1];
+                document.getElementById("formResult").innerHTML = xmlhttp.responseText;
+            }
+        }
+
+        function create() {
+            if (window.XMLHttpRequest) {
+                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+
+        function login() {
+            // create();
+            xmlhttp = new XMLHttpRequest();
+            // 设置异步回调函数
+            xmlhttp.onreadystatechange = callback;
+            // 设置跳转URL，true代表异步的，使用POST需要在send时候拼接参数
+            // 设置open方法的url时，一定要带虚拟目录！
+            xmlhttp.open("POST", "/account/login", true);
+            // 如果是表单的提交的话需要设置这个头！
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            const remember = document.getElementById("remember").checked;
+            const pwd = document.getElementById("hidden");
+            const user = document.getElementById("user");
+            const tryCount = document.getElementById("hidden2");
+            xmlhttp.send("user=" + user.value + "&" +
+                "password=" + pwd.value + "&" +
+                "rememberPwd=" + remember + "&"+
+                "tryCount=" + tryCount.value);
+        }
+
+        function encryption() {
+            const md5pwd = document.getElementById("hidden");
+            const pwd = document.getElementById("password");
+            md5pwd.value = md5(pwd.value);
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="login">
+    <div class="container-login100">
+        <div id="panel" class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="img/icon/default_icon.jpg" alt="IMG">
+            </div>
+
+            <!--账号密码-->
+            <form class="login100-form validate-form" id="login" onsubmit="return false;" action="#" method="post">
+				<span class="login100-form-title">
+					用户登录
+				</span>
+                <!-- 账号 -->
+                <div class="wrap-input100 validate-input">
+                    <input id="user" class="input100" type="text" name="email" placeholder="邮箱/用户名/UID">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+						<i class="fa fa-user" aria-hidden="true"></i>
+					</span>
+                </div>
+                <!-- 密码 -->
+                <div class="wrap-input100 validate-input">
+                    <input id="password" class="input100" type="password" name="pass" placeholder="密码"
+                           onblur="encryption()">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+                </div>
+                <!-- 记住我 -->
+                <div class="txtRemember">
+                    <input type="text" id="hidden" hidden/>
+                    <input type="hidden" id="hidden2" value= "0"/>
+                    <input id="remember" type="checkbox"/> 记住我
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" onclick="login()">
+                        登陆
+                    </button>
+                </div>
+
+                <div class="text-center p-t-12">
+                    <a class="txt2" href="javascript:">
+                        忘记密码？
+                    </a>
+                </div>
+                <!-- result -->
+                <div class="text-center p-b-14" id="formResult">
+                    这个是初始化信息，等到button的onclick触发之后我就会改变！
+                </div>
+
+                <div class="text-center p-t-136">
+                    <a class="txt2" href="registe.html">
+                        还没有账号？立即注册
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

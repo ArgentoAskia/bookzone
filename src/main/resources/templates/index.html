@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>演示：紫色背景简洁登陆页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="framework/layui/css/layui.css">
+
+    <!--图标-->
+    <link rel="stylesheet" type="text/css" href="common/css/font-awesome.min.css">
+
+    <!--布局框架-->
+    <link rel="stylesheet" type="text/css" href="common/css/util.css">
+
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="common/css/index.css">
+
+
+    <script src="framework/layui/layui.js"></script>
+
+
+</head>
+
+<body>
+
+
+<div class="main">
+    <div id="header">
+        <!-- 导航栏 -->
+        <ul class="nav-main layui-nav">
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">最新活动</a>
+            </li>
+            <li class="layui-nav-item layui-this">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">产品</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">大数据</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">解决方案</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="">社区</a>
+            </li>
+            <li style="margin-top:10px; margin-right: 170px;" class="layui-nav-more">
+                <div class="layui-input-block">
+                    <input style="width: 200px" type="text" name="title" required lay-verify="required"
+                           placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </li>
+            <li style="margin-top: 10px;margin-right: 90px;" class="layui-nav-more">
+                <a class="layui-btn layui-btn-radius layui-btn-primary">
+                    <i style="font-size: 20px; color: #1b1e21;" class="layui-icon layui-icon-search"></i>
+                </a>
+            </li>
+            <li style="margin-top: 10px;margin-right: 20px" class="layui-nav-more">
+                <a class="layui-btn layui-btn-radius layui-btn-primary" href="login.html">
+                    <i style="font-size: 20px; color: #1b1e21;" class="layui-icon layui-icon-user">
+                        <span class="layui-badge">
+                            10
+                        </span>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function () {
+                var element = layui.element;
+                //…
+            });
+        </script>
+    </div>
+
+    <div class="container-main100">
+        <!-- 中间空白面板 -->
+        <div class="wrap-main100">
+            <!-- 大标题 -->
+            <div class="layui-row">
+                <div class="layui-col-md10">
+                    <span style="font-size: 40px; text-space: 2px">最新更新</span>
+                    <span style="color: gray; font-size: 25px; margin-left: 30px">update</span>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="#" class="loginButton">MORE+</a><br>
+                </div>
+                <hr style="color: cornflowerblue;height: 5px"/>
+            </div>
+            <!-- 一行 一周更新-->
+            <div class="layui-row layui-col-space25" style="margin-top: 20px">
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大标题 -->
+            <div class="layui-row" style="margin-top: 200px">
+                <div class="layui-col-md10">
+                    <span style="font-size: 40px; text-space: 2px">最新更新</span>
+                    <span style="color: gray; font-size: 25px; margin-left: 30px">update</span>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="#" class="loginButton">MORE+</a><br>
+                </div>
+                <hr style="color: cornflowerblue;height: 5px"/>
+            </div>
+
+            <!-- 一行 推荐作品-->
+            <div class="layui-row layui-col-space25" style="margin-top: 20px">
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大标题 -->
+            <div class="layui-row" style="margin-top: 200px">
+                <div class="layui-col-md10">
+                    <span style="font-size: 40px; text-space: 2px">最新更新</span>
+                    <span style="color: gray; font-size: 25px; margin-left: 30px">update</span>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="#" class="loginButton">MORE+</a><br>
+                </div>
+                <hr style="color: cornflowerblue;height: 5px"/>
+            </div>
+            <!-- 一行 高评作品-->
+            <div class="layui-row layui-col-space25" style="margin-top: 20px">
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大标题 -->
+            <div class="layui-row" style="margin-top: 200px">
+                <div class="layui-col-md10">
+                    <span style="font-size: 40px; text-space: 2px">最新更新</span>
+                    <span style="color: gray; font-size: 25px; margin-left: 30px">update</span>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="#" class="loginButton">MORE+</a><br>
+                </div>
+                <hr style="color: cornflowerblue;height: 5px"/>
+            </div>
+            <!-- 一行 日轻作品-->
+            <div class="layui-row layui-col-space25" style="margin-top: 20px">
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            .
+
+            <!-- 大标题 -->
+            <div class="layui-row" style="margin-top: 200px">
+                <div class="layui-col-md10">
+                    <span style="font-size: 40px; text-space: 2px">最新更新</span>
+                    <span style="color: gray; font-size: 25px; margin-left: 30px">update</span>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="#" class="loginButton">MORE+</a><br>
+                </div>
+                <hr style="color: cornflowerblue;height: 5px"/>
+            </div>
+            <!-- 一行 原创作品-->
+            <div class="layui-row layui-col-space25" style="margin-top: 20px">
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大标题 -->
+            <div class="layui-row" style="margin-top: 200px">
+                <div class="layui-col-md10">
+                    <span style="font-size: 40px; text-space: 2px">最新更新</span>
+                    <span style="color: gray; font-size: 25px; margin-left: 30px">update</span>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="#" class="loginButton">MORE+</a><br>
+                </div>
+                <hr style="color: cornflowerblue;height: 5px"/>
+            </div>
+            <!-- 一行 韩清作品-->
+            <div class="layui-row layui-col-space25" style="margin-top: 20px">
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="card">
+                        <img src="img/icon/default_book.png" alt="book" class="card-img">
+                        <div class="card-msg">
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                            <p>欢迎来到W星系</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div style="text-align: center">
+            Just For Fun
+        </div>
+    </div>
+</div>
+</body>
+</html>

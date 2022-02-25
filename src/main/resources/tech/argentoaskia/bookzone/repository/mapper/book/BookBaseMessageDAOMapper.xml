@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.book.BookBaseMessageDAO" >
+    <insert id="insert" parameterType="tech.argentoaskia.bookzone.model.beans.original.BookBaseMessage"></insert>
+    <update id="update" parameterType="tech.argentoaskia.bookzone.model.beans.original.BookBaseMessage"></update>
+    <delete id="delete" parameterType="tech.argentoaskia.bookzone.model.beans.original.BookBaseMessage"></delete>
+    <select id="getCollectionsUpdate" resultType="java.lang.Integer"
+            parameterType="tech.argentoaskia.bookzone.model.beans.atomic.UID">
+        select COUNT(BID)
+        from user_collections
+        where UID = #{uid} and BLASTUPDATETIME &lt; BNEWUPDATETIME
+    </select>
+    <select id="selectAll" resultType="tech.argentoaskia.bookzone.model.beans.original.BookBaseMessage"></select>
+    <select id="selectByOriginalType" resultType="tech.argentoaskia.bookzone.model.beans.original.BookBaseMessage"
+            parameterType="tech.argentoaskia.bookzone.model.beans.original.BookBaseMessage"></select>
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.account.UserMessageDAO">
+    <resultMap id="userMessage" type="tech.argentoaskia.bookzone.model.beans.original.UserMessage">
+        <id property="uid" column="UID" typeHandler="tech.argentoaskia.bookzone.repository.typehandle.UIDTypeHandler"/>
+        <result property="registedTime" column="UREGISTEDTIME"/>
+        <result property="ableCom" column="UENABLECOM"/>
+        <result property="age" column="UAGE"/>
+        <result property="coins" column="UCOIN"/>
+        <result property="email" column="UEMail"/>
+        <result property="exp" column="UEXP"/>
+        <result property="icon" column="UICONURL" typeHandler="tech.argentoaskia.bookzone.repository.typehandle.IconTypeHandler"/>
+        <result property="introduction" column="UINTRODUCTION"/>
+        <result property="lv" column="UACCOUNTLV"/>
+    </resultMap>
+    <insert id="insert">
+        INSERT INTO user_base_message(UID, UICONURL, UEMAIL, UAGE, UENABLECOM, UINTRODUCTION, UREGISTEDTIME, UACCOUNTLV, UEXP, UCOIN)
+        VALUES (#{uid}, #{icon}, #{email}, #{age}, #{ableCom}, #{introduction}, #{registedTime}, #{lv}, #{exp}, #{coins})
+    </insert>
+    <update id="update">
+        UPDATE user_base_message
+        <set>
+        UID = #{uid},
+        <if test="icon != null">
+            UICONURL = #{icon},
+        </if>
+        <if test="email != null">
+            UEMAIL = #{email},
+        </if>
+        <if test="age != null">
+            UAGE = #{age},
+        </if>
+        <if test="ableCom != null">
+            UENABLECOM = #{ableCom},
+        </if>
+        <if test="introduction != null">
+            UINTRODUCTION = #{introduction},
+        </if>
+        <if test="registedTime != null">
+            UREGISTEDTIME = #{registedTime},
+        </if>
+        <if test="lv != null">
+            UACCOUNTLV = #{lv},
+        </if>
+        <if test="exp != null">
+            UEXP = #{exp},
+        </if>
+        <if test="coins != null">
+            UCOIN = #{coins},
+        </if>
+        </set>
+        WHERE UID = #{uid}
+    </update>
+    <delete id="deleteByUID">
+        DELETE FROM user_base_message
+        WHERE UID = #{uid}
+    </delete>
+    <delete id="delete" parameterType="tech.argentoaskia.bookzone.model.beans.original.UserMessage"></delete>
+
+    <select id="selectAll" resultType="tech.argentoaskia.bookzone.model.beans.original.UserMessage" resultMap="userMessage">
+        SELECT UID, UICONURL, UEMail, UAGE, UENABLECOM, UINTRODUCTION, UREGISTEDTIME, UACCOUNTLV, UEXP, UCOIN
+        FROM user_base_message
+    </select>
+
+    <select id="selectByUID" resultType="tech.argentoaskia.bookzone.model.beans.original.UserMessage" resultMap="userMessage">
+        SELECT UID, UICONURL, UEMail, UAGE, UENABLECOM, UINTRODUCTION, UREGISTEDTIME, UACCOUNTLV, UEXP, UCOIN
+        FROM user_base_message
+        WHERE UID = #{uid}
+    </select>
+
+    <select id="selectByOriginalType" resultType="tech.argentoaskia.bookzone.model.beans.original.UserMessage" resultMap="userMessage">
+        SELECT UID, UICONURL, UEMail, UAGE, UENABLECOM, UINTRODUCTION, UREGISTEDTIME, UACCOUNTLV, UEXP, UCOIN
+        FROM user_base_message
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="icon != null">
+                and UICONURL = #{icon}
+            </if>
+            <if test="email != null">
+                and UEMAIL = #{email}
+            </if>
+            <if test="age != null">
+                and UAGE = #{age}
+            </if>
+            <if test="ableCom != null">
+                and UENABLECOM = #{ableCom}
+            </if>
+            <if test="introduction != null">
+                and UINTRODUCTION = #{introduction}
+            </if>
+            <if test="registedTime != null">
+                and UREGISTEDTIME = #{registedTime}
+            </if>
+            <if test="lv != null">
+                and UACCOUNTLV = #{lv}
+            </if>
+            <if test="exp != null">
+                and UEXP = #{exp}
+            </if>
+            <if test="coins != null">
+                and UCOIN = #{coins}
+            </if>
+        </where>
+    </select>
+</mapper>

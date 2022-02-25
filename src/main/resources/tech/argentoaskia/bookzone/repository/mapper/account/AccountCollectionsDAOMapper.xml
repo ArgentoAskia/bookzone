@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.account.AccountCollectionsDAO">
+    <insert id="insert" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections">
+        INSERT INTO user_collections
+        VALUES(#{uid}, #{bid}, #{cid}, #{bookLastWatchTime}, #{bookLastUpdateTime}, #{bookNewUpdateTime})
+    </insert>
+    <update id="update" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections">
+        UPDATE user_collections
+        <set>
+            <if test="cid != null">
+                CID = #{cid},
+            </if>
+            <if test="bookLastWatchTime != null">
+                BLASTWATCHTIME = #{bookLastWatchTime},
+            </if>
+            <if test="bookLastUpdateTime != null">
+                BLASTUPDATETIME = #{bookLastUpdateTime},
+            </if>
+            UID = #{uid},
+            BID = #{bid}
+        </set>
+        where UID = #{uid} and BID = #{bid}
+    </update>
+    <update id="updateLastUpdateTime">
+        UPDATE user_collections
+        set BLASTUPDATETIME = #{newUpdate}
+        where UID = #{uid} and BID = #{bid}
+    </update>
+    <delete id="delete" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections">
+        delete from user_collections
+        <where>
+            <if test="cid != null">
+                and CID = #{cid}
+            </if>
+            <if test="bid != null">
+                and BID = #{bid}
+            </if>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="bookLastWatchTime != null">
+                and BLASTWATCHTIME = #{bookLastWatchTime}
+            </if>
+            <if test="bookLastUpdateTime != null">
+                and BLASTUPDATETIME = #{bookLastUpdateTime}
+            </if>
+            <if test="bookNewUpdateTime != null">
+                and BNEWUPDATETIME = #{bookNewUpdateTime}
+            </if>
+            <if test="cid == null and bid == null and uid == null and bookLastWatchTime == null and bookLastUpdateTime == null and bookNewUpdateTime == null">
+                and UID = 0
+            </if>
+        </where>
+    </delete>
+
+    <select id="selectAll" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections">
+        select UID uid, BID bid, CID cid, BLASTWATCHTIME bookLastWatchTime, BLASTUPDATETIME bookLastUpdateTime, BNEWUPDATETIME bookNewUpdateTime
+        from user_collections
+    </select>
+    <select id="selectByOriginalType" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections"
+            parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections">
+        select UID uid, BID bid, CID cid, BLASTWATCHTIME bookLastWatchTime, BLASTUPDATETIME bookLastUpdateTime, BNEWUPDATETIME bookNewUpdateTime
+        from user_collections
+        <where>
+            <if test="cid != null">
+                and CID = #{cid}
+            </if>
+            <if test="bid != null">
+                and BID = #{bid}
+            </if>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="bookLastWatchTime != null">
+                and BLASTWATCHTIME = #{bookLastWatchTime}
+            </if>
+            <if test="bookLastUpdateTime != null">
+                and BLASTUPDATETIME = #{bookLastUpdateTime}
+            </if>
+            <if test="bookNewUpdateTime != null">
+                and BNEWUPDATETIME = #{bookNewUpdateTime}
+            </if>
+        </where>
+    </select>
+    <select id="selectByUID" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountCollections"
+            parameterType="tech.argentoaskia.bookzone.model.beans.atomic.UID">
+        select UID uid, BID bid, CID cid, BLASTWATCHTIME bookLastWatchTime, BLASTUPDATETIME bookLastUpdateTime, BNEWUPDATETIME bookNewUpdateTime
+        from user_collections
+        where UID = #{uid}
+    </select>
+    <select id="getBookCollectionsCount" resultType="java.lang.Integer"
+            parameterType="tech.argentoaskia.bookzone.model.beans.atomic.BID">
+        select count (UID)
+        from user_collections
+        where BID = #{bid}
+    </select>
+    <select id="selectNewUpdateTime" resultType="java.time.LocalDateTime">
+        select BNEWUPDATETIME
+        from user_collections
+        where UID = #{uid} and BID = #{bid}
+    </select>
+    <select id="getCollectionsUpdate" resultType="java.lang.Integer"
+            parameterType="tech.argentoaskia.bookzone.model.beans.atomic.UID">
+        select COUNT(BID)
+        from user_collections c
+        where UID = #{uid} and c.BLASTUPDATETIME &lt; c.BNEWUPDATETIME
+    </select>
+</mapper>

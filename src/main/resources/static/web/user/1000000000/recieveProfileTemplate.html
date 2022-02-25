@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>演示：紫色背景简洁登陆页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../../../framework/layui/css/layui.css">
+
+    <!--图标-->
+    <link rel="stylesheet" type="text/css" href="../../../common/css/font-awesome.min.css">
+
+    <!--布局框架-->
+    <link rel="stylesheet" type="text/css" href="../../../common/css/util.css">
+
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="../../../common/css/profileTemplate.css">
+
+
+    <script src="../../../framework/layui/layui.js"></script>
+    <script src="../../../common/js/ProfileTemplateCommen.js"></script>
+
+
+
+</head>
+
+<body>
+
+<div class="main">
+    <div id="header">
+        <!-- 导航栏 -->
+        <ul class="nav-main layui-nav">
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">最新活动</a>
+            </li>
+            <li class="layui-nav-item layui-this">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">产品</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">大数据</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="javascript:;">解决方案</a>
+            </li>
+            <li class="layui-nav-item">
+                <a style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;" href="">社区</a>
+            </li>
+            <li style="margin-top:10px; margin-right: 170px;" class="layui-nav-more">
+                <div class="layui-input-block">
+                    <input style="width: 200px" type="text" name="title" required lay-verify="required"
+                           placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </li>
+            <li style="margin-top: 10px;margin-right: 90px;" class="layui-nav-more">
+                <a class="layui-btn layui-btn-radius layui-btn-primary">
+                    <i style="font-size: 20px; color: #1b1e21;" class="layui-icon layui-icon-search"></i>
+                </a>
+            </li>
+            <li style="margin-top: 10px;margin-right: 20px" class="layui-nav-more">
+                <a class="layui-btn layui-btn-radius layui-btn-primary" href="../../../login.html">
+                    <i style="font-size: 20px; color: #1b1e21;" class="layui-icon layui-icon-user">
+                        <span class="layui-badge">
+                            10
+                        </span>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function () {
+                var element = layui.element;
+                //…
+            });
+        </script>
+    </div>
+
+    <div class="container-main100">
+        <!-- 面包屑和副标题 -->
+        <div class="breadcrumb">
+            <h1 style="font-size: 30px; font-weight: bold;">12312312</h1>
+            <span class="layui-breadcrumb" lay-separator="-">
+                <a href="">首页</a>
+                <a href="">国际新闻</a>
+                <a href="">亚太地区</a>
+                <a><cite>正文</cite></a>
+            </span>
+        </div>
+        <div id="panel" class="wrap-main100">
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md3">
+                    <div class="nav">
+                        <div class="nav-d1">
+                            <img class="nav-img" src="http://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/48540923dd54564e2d86086eb8de9c82d0584f82.jpg" alt="">
+                        </div>
+                        <div class="nav-name">
+                            <h1>Askiasdadasadadasadassdd</h1>
+                        </div>
+                        <div class="nav-hotMessage">
+                            <div class="layui-font-18">
+                                lv
+                                <div class="layui-progress" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-red" lay-percent="5/6"></div>
+                                </div>
+                            </div>
+                            <div class="layui-font-18">
+                                exp
+                                <div class="layui-progress" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-red" lay-percent="50/100"></div>
+                                </div>
+                            </div>
+                            <div class="layui-font-18">
+                                coins
+                                <div class="layui-progress" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-red" lay-percent="2000/6000"></div>
+                                </div>
+                            </div>
+                            <div class="layui-font-18">
+                                注册时间：2022
+                            </div>
+                        </div>
+                        <hr class="hr-style"/>
+                        <div class="button-group">
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('userMessageProfileTemplate.html')">个人信息</button><br>
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('manageProfileTemplate.html')">我管理的小说</button><br>
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('collectionProfileTemplate.html')">收藏夹</button><br>
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('privateMessageProfileTemplate.html')">我的私信</button><br>
+                            <button type="button" class="button-type-selected layui-btn layui-btn-normal">我的回复</button><br>
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('readRecordProfileTemplate.html')">阅读记录</button><br>
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('coinRecordProfileTemplate.html')">硬币获取记录</button><br>
+                            <button type="button" class="button-type layui-btn layui-btn-primary" onclick="href('expRecordProfileTemplate.html')">经验获取记录</button><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md9"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

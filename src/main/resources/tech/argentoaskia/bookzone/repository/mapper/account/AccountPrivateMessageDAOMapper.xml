@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tech.argentoaskia.bookzone.repository.mapper.account.AccountPrivateMessageDAO" >
+    <resultMap id="accountPrivateMessageDAO"
+               type="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage">
+        <id property="uid" column="UID" typeHandler="tech.argentoaskia.bookzone.repository.typehandle.UIDTypeHandler"/>
+        <result property="uidFrom" column="UID2"
+                typeHandler="tech.argentoaskia.bookzone.repository.typehandle.UIDTypeHandler"/>
+        <result property="userNameFrom" column="UNAME2"/>
+        <result property="repeatTimeFrom" column="REPEATTIME"/>
+        <result property="repeatContextFrom" column="REPEATCONTEXT"/>
+        <result property="status" column="REPEATSTATUS"/>
+    </resultMap>
+    <insert id="insert" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage">
+        insert into user_private_message(UID, UID2, UNAME2, REPEATTIME, REPEATCONTEXT, REPEATSTATUS)
+        values(#{uid}, #{uidFrom}, #{userNameFrom}, #{repeatTimeFrom}, #{repeatContextFrom}, #{status})
+    </insert>
+    <update id="update" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage">
+        update user_private_message
+        <set>
+            <if test="userNameFrom != null">
+                UNAME2 = #{userNameFrom}
+            </if>
+            <if test="status != null">
+                REPEATSTATUS = #{status}
+            </if>
+        </set>
+        where UID = #{uid} and UID2 = #{uidFrom} and REPEATTIME = #{repeatTimeFrom}
+    </update>
+    <delete id="delete" parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage">
+        delete from user_private_message
+        <where>
+            <if test="uid != null">
+               and UID = #{uid}
+            </if>
+            <if test="uidFrom != null">
+               and UID2 = #{uidFrom}
+            </if>
+            <if test="userNameFrom != null">
+                and UNAME2 = #{userNameFrom}
+            </if>
+            <if test="repeatTimeFrom != null">
+                and REPEATTIME = #{repeatTimeFrom}
+            </if>
+            <if test="repeatContextFrom != null">
+                and REPEATCONTEXT = #{repeatContextFrom}
+            </if>
+            <if test="status != null">
+                and REPEATSTATUS = #{status}
+            </if>
+        </where>
+    </delete>
+    <select id="selectAll" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage" resultMap="accountPrivateMessageDAO">
+        select UID, UID2, UNAME2, REPEATTIME, REPEATCONTEXT, REPEATSTATUS
+        FROM user_private_message
+    </select>
+    <select id="selectByOriginalType" resultMap="accountPrivateMessageDAO" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage"
+            parameterType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage">
+        select UID, UID2, UNAME2, REPEATTIME, REPEATCONTEXT, REPEATSTATUS
+        FROM user_private_message
+        <where>
+            <if test="uid != null">
+                and UID = #{uid}
+            </if>
+            <if test="uidFrom != null">
+                and UID2 = #{uidFrom}
+            </if>
+            <if test="userNameFrom != null">
+                and UNAME2 = #{userNameFrom}
+            </if>
+            <if test="repeatTimeFrom != null">
+                and REPEATTIME = #{repeatTimeFrom}
+            </if>
+            <if test="repeatContextFrom != null">
+                and REPEATCONTEXT = #{repeatContextFrom}
+            </if>
+            <if test="status != null">
+                and REPEATSTATUS = #{status}
+            </if>
+        </where>
+    </select>
+    <select id="selectByCommunication" resultMap="accountPrivateMessageDAO" resultType="tech.argentoaskia.bookzone.model.beans.original.AccountPrivateMessage">
+        select UID, UID2, UNAME2, REPEATTIME, REPEATCONTEXT, REPEATSTATUS
+        FROM user_private_message
+        where UID = #{uid} and UID2 = #{uidFrom}
+        UNION ALL
+        select UID, UID2, UNAME2, REPEATTIME, REPEATCONTEXT, REPEATSTATUS
+        FROM user_private_message
+        where UID = #{uidFrom} and UID2 = #{uid}
+        ORDER BY REPEATTIME
+    </select>
+    <select id="selectUnReadMessageCount" resultType="java.lang.Integer"
+            parameterType="tech.argentoaskia.bookzone.model.beans.atomic.UID">
+        select COUNT(UID2)
+        from user_private_message
+        where UID = #{uid} and REPEATSTATUS = false
+    </select>
+</mapper>
