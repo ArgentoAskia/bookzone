@@ -22,6 +22,8 @@ import tech.argentoaskia.bookzone.service.bootstrap.impls.CacheInitChainImpl;
 import tech.argentoaskia.bookzone.utils.MsgDigestUtil;
 import tech.argentoaskia.bookzone.utils.SpringUtil;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,6 +49,14 @@ public class BookzoneApplicationTests {
 
     @Test
     void contextLoads() {
+        String path = "D:/OpenSourceProject/bookzone/target/classes/static/img/icon/default_icon.jpg";
+        File file = new File(path);
+        try {
+            Image image = ImageIO.read(file);
+            System.out.println(image);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
